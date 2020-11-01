@@ -24,7 +24,7 @@ public class Teacher {
         return this.subject;
     }
 
-    public void evaluate(Student st1){
+    public String evaluate(Student st1){
         st1=new Student("Ivan");
         String chislo_rec = null; 
         double chislo = (int) (Math.random()*5);
@@ -47,8 +47,9 @@ public class Teacher {
              chislo_rec="Неправильная оценка";
          }
 
-        System.out.println("Преподователь "+ this.name+" оценил студента с именем "+st1.getNAme()+
-                " по предмету "+ this.subject+ " на оценку "+ chislo_rec );
+        //System.out.println("Преподователь "+ this.name+" оценил студента с именем "+st1.getNAme()+
+          //     " по предмету "+ this.subject+ " на оценку "+ chislo_rec );
+        return chislo_rec;
 
     }
 }
