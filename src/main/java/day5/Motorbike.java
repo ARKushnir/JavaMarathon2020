@@ -6,9 +6,9 @@ public class Motorbike {
     String model;
 
         public Motorbike(int bike_issuer_year, String bike_colour, String bike_model){
-            this.issue_year=bike_issuer_year;
-            this.colour=bike_colour;
-            this.model=bike_model;
+            issue_year=bike_issuer_year;
+            colour=bike_colour;
+            model=bike_model;
         }
 
         public int getDate(){
