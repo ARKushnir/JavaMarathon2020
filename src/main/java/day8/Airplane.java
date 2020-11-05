@@ -7,20 +7,17 @@ public class Airplane {
     int weight;
     int fuel=0;
 
-   public Airplane(String producer, int year, int length, int weight ){
+   public  Airplane(String producer, int year, int length, int weight ){
        this.producer=producer;
        this.year=year;
        this.length=length;
        this.weight=weight;
 
-       StringBuilder sb = new StringBuilder();
-
-       sb.append("Изготовитель") .append(producer).append(" Год выпуска ").append(year).append(" Длина ").append(length).append(" Вес ").append(weight)
-               .append(" Кол-во топива в баке ").append(fuel);
-
-       System.out.println(sb.toString());
-
    }
+    public String toString(){
+       return " Изготовитель "+this.producer+" Год выпуска "+this.year+" Длина"+this.length+" Вес"+this.weight
+                +" Кол-во топива в баке "+fuel;
+    }
     public int getFuel(){
         return fuel;
     }
