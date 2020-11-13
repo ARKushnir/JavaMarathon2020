@@ -5,9 +5,16 @@ import org.w3c.dom.ls.LSOutput;
 public class Task1 {
     public static void main(String[] args) {
         Warehouse warehouse = new Warehouse();
+        Warehouse warehouse2 = new Warehouse();
 
         Picker p= new Picker( warehouse);
         Courier c = new Courier (warehouse);
+
+        Picker p2= new Picker( warehouse2);
+        Courier c2 = new Courier (warehouse2);
+
+        p2.doWork();
+        c2.doWork();
 
         businessProcess(p);
         businessProcess(c);

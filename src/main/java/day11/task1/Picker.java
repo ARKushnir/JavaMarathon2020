@@ -26,7 +26,7 @@ public class Picker implements Worker{
         salary = salary + 80;
         warehouse.getCountPickedOrders();
     }
-   //не понятно как до конца сделать правильно !
+
     @Override
     public void bonus() {
         if (warehouse.getCountPickedOrders()==10000){
