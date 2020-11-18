@@ -5,7 +5,9 @@ import java.util.Date;
 
 public class Message {
 
-    SimpleDateFormat formatter= new SimpleDateFormat("EEE, MMMM d, yyyy 'MSK' HH:mm:ss z");
+   // ON: Sun Aug 30 19:07:34 MSK 2020
+
+    SimpleDateFormat formatter= new SimpleDateFormat("EEE MMM d, HH:mm:ss 'MSK' yyyy");
 
     User sender;
     User receiver;

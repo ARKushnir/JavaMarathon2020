@@ -5,8 +5,6 @@ import java.util.List;
 
 public class MessageDatabase {
 
-    static Message message;
-
     static List<Message>  messages = new ArrayList<>();
 
     public static void addNewMessage(User u1, User u2, String text){
@@ -20,8 +18,9 @@ public class MessageDatabase {
 
     public static void showDialog(User u1, User u2){
         for (Message message: messages){
-            if (message.getSender()==u1 && message.getReceiver()==u2){
-                System.out.println(u1.getUsername()+":"+message.getText());
+            if ((message.getSender()==u1 && message.getReceiver()==u2 )||
+            ( message.getSender()==u2 && message.getReceiver()==u1)){
+                System.out.println(message.getSender().getUsername()+":"+message.getText());
                // System.out.println(u1.getUsername()+":"+u2.getMessage());
                // System.out.println(u2.getUsername()+":"+u1.getMessage());
                // System.out.println(u2.getUsername()+":"+u1.message.getText());

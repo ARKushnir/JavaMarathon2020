@@ -7,13 +7,8 @@ import java.util.List;
 
 public class User {
 
-    Message message;
     String username;
     List<User> subscriptions = new ArrayList<>();
-
-    public Message getMessage() {
-        return message;
-    }
 
     public User(String username) {
         this.username = username;

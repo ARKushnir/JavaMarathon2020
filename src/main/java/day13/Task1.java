@@ -16,7 +16,7 @@ public class Task1 {
         user2.sendMessage(user1, "Hi Artem Hi are you ?");
         user2.sendMessage(user1, "Hi Artem we are going to ");
 
-        user3.sendMessage(user1, "Hi Artem from Alexander msg 1" );
+       user3.sendMessage(user1, "Hi Artem from Alexander msg 1" );
         user3.sendMessage(user1, "Hi Artem from Alexander msg 2" );
         user3.sendMessage(user1, "Hi Artem from Alexander msg 3" );
 
@@ -26,6 +26,6 @@ public class Task1 {
 
         user3.sendMessage(user1, "Hi Artem from Alexander msg 4" );
 
-        MessageDatabase.showDialog(user1, user3);
+        MessageDatabase.showDialog(user3, user1);
     }
 }
