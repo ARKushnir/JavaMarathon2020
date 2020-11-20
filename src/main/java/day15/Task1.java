@@ -1,33 +1,53 @@
 package day15;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.io.PrintWriter;
 
 public class Task1 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        File file = new File("resources/shoes.csv");
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        InputStream is = classloader.getResourceAsStream("shoes.csv");
+        File file = new File(classloader.getResource("shoes.csv").getFile());
+
+        File destFile = new File("day15_dest_file.txt");
+        FileWriter pw = new FileWriter(destFile) ;
+
         Scanner scanner = null;
         List<String> lists = new ArrayList<String>();
+        List<String[]> lists_new = new ArrayList<>();
         try {
             scanner = new Scanner(file);
-            //scanner.nextLine();
             while (scanner.hasNextLine()){
-                String[] line = scanner.nextLine().split(" ");
+                String[] line = scanner.nextLine().split(";");
                 lists.addAll(Arrays.asList(line));
-
+                if (Integer.parseInt(line[2])==0) {
+                    lists_new.add(line);
             }
-        } catch (FileNotFoundException e) {
+        } } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
         }
         scanner.close();
-        for (String list:lists){
-            System.out.println(list);
+       // System.out.println(lists_new.toString());
+        /* for (String[] strings : lists_new) {
+            for (String s:strings){
+                System.out.print(s + " ");
+            }
+            System.out.println();
+        } */
+
+       /* for (String[] strings : lists_new) {
+            System.out.println(Arrays.toString(strings));
+        }*/
+
+        for(String[] strings: lists_new) {
+            pw.write(Arrays.toString(strings) + System.lineSeparator());
         }
+        pw.close();
 
     }
 }
