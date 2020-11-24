@@ -2,11 +2,14 @@ package day14;
 
 public class Person {
     String name;
-    String age;
+    int age;
 
-    public Person(String name, String age) {
+    public Person(String name, Integer age) {
         this.name=name;
-        this.age=age;
+        if (age<0){
+            throw new ArithmeticException ("Возраст не может быть меньше 0") ;
+        }
+         this.age=age;
     }
 
     @Override

@@ -15,8 +15,8 @@ public class Task1 {
     }
 
     public static void  printSumDigits()  {
-        File file = new File("file_test.txt");
-        //File file = new File ("C:\\java_tasks\\JavaMarathon2020\\src\\main\\java\\day14\\file_test.txt");
+        File file = new File("file_test_d.txt");
+        //File file = new File ("C:\\java_tasks\\JavaMarathon2020\\src\\main\\java\\day14\\file_test_d.txt");
         Scanner scanner = null;
         try {
             scanner = new Scanner(file);
