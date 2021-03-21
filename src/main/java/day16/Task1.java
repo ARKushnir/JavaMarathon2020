@@ -20,8 +20,8 @@ public class Task1 {
             String[] lineArray = line.split(" ");
             for (String element : lineArray) {
                 sum = sum + Integer.parseInt(element);
-                avg = (double) sum / lineArray.length;
             }
+            avg = (double) sum / lineArray.length;
             System.out.println(avg);
             System.out.println(decimalFormat.format(avg));
         }

@@ -39,7 +39,7 @@ public class Task2 {
         }
 
         for (int i = 0; i < numbers.length; i++) {
-            sum = sum + numbers[i];
+            sum += numbers[i];
             if ((i + 1) % 4 == 0) {
                 avg = (double) sum / 4;
                 pw2.write(avg + " ");
@@ -65,14 +65,14 @@ public class Task2 {
         String[] numbersString2 = line.split(" ");
         double[] numbers2 = new double[numbersString2.length];
 
-        for (String number : numbersString2) {
+      /*  for (String number : numbersString2) {
             numbers2[counter2++] = Double.parseDouble(number);
-        }
+        } */
 
-        for (Double number : numbers2) {
-            summ = summ + number;
+        for (String number : numbersString2) {
+            summ +=  Double.parseDouble(number);
         }
-        System.out.println(Math.floor(summ));
+        System.out.println((int) summ);
 
     }
 }
