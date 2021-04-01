@@ -1,14 +1,11 @@
 package day0;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class Field {
     static final int  FIELD_SIZE=10;
-    List<Ship> ships;
+    List<Ship> ships = new LinkedList<>();
     Map<Coordinate, Cell>  map = new HashMap<>();
 
     public Field() {
@@ -46,10 +43,11 @@ public class Field {
             } else {
                 cell.type = CellType.Ship;
                 cell.ship = ship;
+
             }
         }
-
         ships.add(ship);
+
         List<Coordinate>  oreolCd= new ArrayList<>();
         for (Coordinate coordinate : ship.getCoordinates()){
 
@@ -104,14 +102,16 @@ public class Field {
         Cell cell = map.get(coordinate);
         if (cell.type==CellType.Ship) {
             shFlag = true;
+            cell.ship.shoot(coordinate);
+            cell.type=CellType.Hit;
             if (cell.ship.isAlive())
             {
                 System.out.println("Ранен");
-                cell.type=CellType.Hit;
-                cell.ship.shoot(coordinate);
+
             } else {
                 System.out.println("Убит");
             }
+
         }
         else if (cell.type==CellType.Hit)
         {

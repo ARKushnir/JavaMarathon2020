@@ -2,12 +2,9 @@ package day0;
 
 import java.util.*;
 
-import static day0.ShipType.*;
-
 public class Task1 {
 
     private static String Cd_in;
-    private int curIndex;
     private final static int PLAYERS_SIZE=2;
 
     public static void main(String[] args) {
@@ -16,6 +13,9 @@ public class Task1 {
         Field field = new Field();
         Field field2 = new Field();
 
+        Player player = new Player(PlayerType.valueOf("First"), field);
+        Player player2 = new Player(PlayerType.valueOf("Second"), field);
+
         Scanner in = new Scanner(System.in);
 
         System.out.println("Первый игрок заполните поле");
@@ -23,20 +23,14 @@ public class Task1 {
         System.out.println("Второй игрок заполните поле");
         fillField(field2, in);
 
-       // in.close();
         System.out.println("Поле 1-го игрока");
         field.printField();
         System.out.println("Поле 2-го игрока");
         field2.printField();
 
-        Field fld;
-        String step;
+       /*  boolean shFlag = true;
 
-        boolean isUserOne = true;
-        boolean shFlag = true;
-        int next_step =0 ;
-
-        while (field2.areShipsAlive() && field.areShipsAlive()) {
+       while (field2.areShipsAlive() && field.areShipsAlive()) {
             do {
                 System.out.println("Ход первого игрока");
                 String shCell = in.nextLine();
@@ -44,8 +38,10 @@ public class Task1 {
                 int x = Integer.parseInt(string_sh[0]);
                 int y = Integer.parseInt(string_sh[1]);
                 shFlag = field2.shoot(new Coordinate(x,y));
-                //shFlag = shoot(field2, new Coordinate(x, y));
-            } while (shFlag);
+            } while (shFlag && field2.areShipsAlive());
+            if ( !field2.areShipsAlive()) {
+                break;
+            }
             do {
                 System.out.println("Ход второго игрока");
                 String shCell = in.nextLine();
@@ -53,15 +49,42 @@ public class Task1 {
                 int x = Integer.parseInt(string_sh[0]);
                 int y = Integer.parseInt(string_sh[1]);
                 shFlag = field.shoot(new Coordinate(x, y));
-            } while (shFlag);
+            } while (shFlag && field.areShipsAlive());
         }
+
         if (field2.areShipsAlive() ) {
             System.out.println("Второй игрок победил ");
-        }
+        } else {
+            System.out.println("Первый игрок победил ");
+        } */
 
+        while (field2.areShipsAlive() && field.areShipsAlive()) {
+            stepPlayer(player, field2, in);
+            if ( !field2.areShipsAlive()) {
+                break;
+            }
+            stepPlayer(player2, field, in);
+
+            if (field2.areShipsAlive() ) {
+                System.out.println("Второй игрок победил ");
+            } else {
+                System.out.println("Первый игрок победил ");
+            }
+        }
     }
 
+    static void stepPlayer(Player player, Field field, Scanner in){
+        boolean shFlag = true;
+        do {
+            System.out.println("Ход " + player.toString()+  " игрока");
+            String shCell = in.nextLine();
+            String[] string_sh = shCell.split(",");
+            int x = Integer.parseInt(string_sh[0]);
+            int y = Integer.parseInt(string_sh[1]);
+            shFlag = field.shoot(new Coordinate(x,y));
+        } while (shFlag && field.areShipsAlive());
 
+    }
 
     static void  fillField(Field field, Scanner in){
        int cnt_pnt = 0; // X-еx палубный корабль
@@ -92,24 +115,16 @@ public class Task1 {
 
                     try {
                         field.add(sh1);
-                        isValid = true;
+                        //
                     } catch (RuntimeException e) {
                         System.out.println(e.getMessage());
                     }
+                    isValid = true;
                 }
                j++;
            }
        }
 
    }
-
-   private void nextStep(){
-       curIndex++;
-       if (curIndex >= PLAYERS_SIZE) {
-           curIndex=0;
-       }
-   }
-
-
 
 }
